@@ -4,30 +4,31 @@ const dotenv = require('dotenv');
 dotenv.config();
 const User = require('./models/User');
 
-const createBhuvan = async () => {
+const createBalaji = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI);
         console.log('MongoDB Connected');
 
-        const email = 'bhuvankattur@gmail.com';
+        const email = 'balaji@caresync.com';
         const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash('bhuvan123', salt);
+        const hashedPassword = await bcrypt.hash('balaji123', salt);
 
         // Delete any existing one first to be safe
         await User.deleteMany({ email });
 
         const user = await User.create({
-            name: 'Bhuvan',
+            name: 'Balaji',
             email: email,
             password: hashedPassword,
             isDoctor: false,
             isAdmin: false,
+            isVerified: true,
             status: 'Active'
         });
 
-        console.log('✅ Bhuvan Patient Account Created Successfully:');
+        console.log('✅ Balaji Patient Account Created & Verified Successfully:');
         console.log(`   Email:    ${user.email}`);
-        console.log(`   Password: bhuvan123`);
+        console.log(`   Password: balaji123`);
 
         mongoose.disconnect();
     } catch (err) {
@@ -36,4 +37,4 @@ const createBhuvan = async () => {
     }
 };
 
-createBhuvan();
+createBalaji();
