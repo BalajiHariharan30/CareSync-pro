@@ -2,7 +2,7 @@ const User = require('../models/User');
 const generateToken = require('../utils/generateToken');
 const { OAuth2Client } = require('google-auth-library');
 
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID || '754087497730-ko2mjon0qhunlsoomjr6cj3g25r178jd.apps.googleusercontent.com');
 
 const ALLOWED_ADMIN_EMAILS = [
     'admin@caresync.com',
@@ -28,7 +28,7 @@ const googleLogin = async (req, res) => {
         // 1. Verify Google Token
         const ticket = await client.verifyIdToken({
             idToken: idToken,
-            audience: process.env.GOOGLE_CLIENT_ID,
+            audience: process.env.GOOGLE_CLIENT_ID || '754087497730-ko2mjon0qhunlsoomjr6cj3g25r178jd.apps.googleusercontent.com',
         });
 
         const payload = ticket.getPayload();

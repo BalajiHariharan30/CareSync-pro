@@ -12,7 +12,7 @@ axios.defaults.baseURL = import.meta.env.VITE_API_URL || '';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || "1023845987001-71nmi29k8aj5lf4n0q6gndjke8s58jbi.apps.googleusercontent.com"}>
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || "754087497730-ko2mjon0qhunlsoomjr6cj3g25r178jd.apps.googleusercontent.com"}>
       <AuthProvider>
         <App />
       </AuthProvider>
