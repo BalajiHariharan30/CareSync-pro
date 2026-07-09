@@ -5,6 +5,7 @@ const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const ALLOWED_ADMIN_EMAILS = [
+    'admin@caresync.com',
     'balaji.bt22@bitsathy.ac.in',
     'santhoshkumar.bt22@bitsathy.ac.in',
     'padmaja.bt22@bitsathy.ac.in',

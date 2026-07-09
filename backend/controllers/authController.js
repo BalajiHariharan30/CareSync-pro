@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 
 const ALLOWED_ADMIN_EMAILS = [
+    'admin@caresync.com',
     'balaji.bt22@bitsathy.ac.in',
     'santhoshkumar.bt22@bitsathy.ac.in',
     'padmaja.bt22@bitsathy.ac.in',
@@ -97,7 +98,7 @@ const loginUser = async (req, res) => {
 
         const user = await User.findOne({ email });
 
-        if (user && (await bcrypt.compare(password, user.password))) {
+        if (user && user.password && (await bcrypt.compare(password, user.password))) {
             if (!user.isVerified && !user.isDoctor && !user.isAdmin) {
                 return res.status(401).json({ message: 'Please verify your email first' });
             }
