@@ -2,7 +2,7 @@
   "name": "doctor-appointment",
   "version": "1.0.0",
   "scripts": {
-    "build": "node -e \"console.log('MY_MONGO_URI:', Buffer.from(process.env.MONGO_URI || '').toString('hex'))\" && npm --prefix frontend install --include=dev && npm --prefix frontend run build"
+    "build": "npm --prefix frontend install --include=dev && npm --prefix frontend run build"
   },
   "dependencies": {
     "@google/genai": "^1.44.0",
