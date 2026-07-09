@@ -44,6 +44,7 @@ const registerUser = async (req, res) => {
             password: hashedPassword,
             isDoctor: isDoctor || false,
             isAdmin: ALLOWED_ADMIN_EMAILS.includes(email.toLowerCase()),
+            isVerified: true, // Auto-verify for easy demo testing
             verificationToken,
             verificationTokenExpire,
         });
