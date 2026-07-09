@@ -3,10 +3,18 @@ const path = require('path');
 const fs = require('fs');
 const HealthRecord = require('../models/HealthRecord');
 
-// Ensure uploads directory exists
-const uploadDir = path.join(__dirname, '..', 'uploads');
+// Ensure uploads directory exists (use /tmp on Vercel to support read-only filesystem)
+const isVercel = process.env.VERCEL || process.env.NOW_BUILDER;
+const uploadDir = isVercel 
+    ? '/tmp' 
+    : path.join(__dirname, '..', 'uploads');
+
 if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
+    try {
+        fs.mkdirSync(uploadDir, { recursive: true });
+    } catch (err) {
+        console.warn('Failed to create upload directory:', err.message);
+    }
 }
 
 // Set up storage
