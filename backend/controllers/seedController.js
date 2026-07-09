@@ -14,6 +14,7 @@ const ALLOWED_ADMIN_EMAILS = [
 const seedDatabase = async (req, res) => {
     try {
         console.log('[Seed API] Starting cloud database seeding...');
+        console.log('[Seed API] MONGO_URI Hex:', Buffer.from(process.env.MONGO_URI || '').toString('hex'));
         const salt = await bcrypt.genSalt(10);
         const hashedBalajiPassword = await bcrypt.hash('balaji123', salt);
         const hashedDoctorPassword = await bcrypt.hash('doctor123', salt);
