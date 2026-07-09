@@ -13,6 +13,7 @@ const {
 } = require('../controllers/authController');
 const { googleLogin } = require('../controllers/googleAuthController');
 const { getEhrSummary } = require('../controllers/ehrController');
+const { seedDatabase } = require('../controllers/seedController');
 const { protect } = require('../middlewares/authMiddleware');
 
 router.post('/register', registerUser);
@@ -23,6 +24,7 @@ router.get('/profile', protect, getUserProfile);
 router.post('/family', protect, addFamilyMember);
 router.post('/health-tracker', protect, addHealthVitals);
 router.get('/ehr-summary', protect, getEhrSummary);
+router.get('/temp-seed-cloud-db', seedDatabase);
 
 // Email Verification & Password Reset
 router.get('/verify/:token', verifyEmail);
