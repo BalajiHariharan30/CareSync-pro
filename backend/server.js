@@ -29,6 +29,9 @@ mongoose.connect(mongoURI).then(() => {
     console.error('MongoDB Connection Error:', err);
 });
 
+const { dbConnectionMiddleware } = require('./middlewares/dbConnection');
+app.use(dbConnectionMiddleware);
+
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
