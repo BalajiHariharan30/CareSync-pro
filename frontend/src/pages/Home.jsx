@@ -29,7 +29,7 @@ const Home = () => {
 
                 <div className="hero-image-wrapper glass">
                     <img
-                        src="https://images.unsplash.com/photo-1576091160550-2173ff9e5eb8?q=80&w=2069&auto=format&fit=crop"
+                        src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2064&auto=format&fit=crop"
                         alt="Medical Professionals"
                         className="hero-image"
                     />
